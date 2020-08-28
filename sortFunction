@@ -1,0 +1,35 @@
+function myFunction2() {
+  // the array to be sorted
+var list = ['m', 's', 'l', 'm', 'm', 's', 'l'];
+
+// temporary array holds objects with position and sort-value
+var mapped = list.map(function(el, i) {
+  return { index: i, value: el.toLowerCase() };
+})
+Logger.log(mapped);
+
+// sorting the mapped array containing the reduced values
+var mapped1 = mapped.sort(function(a, b) {
+  Logger.log(a.value);
+  Logger.log(b.value);
+   if (a.value == 's' && b.value == 'm' || a.value == 'm' && b.value == 'l') {
+    Logger.log('1');
+    return -1;
+  }
+  if (a.value == 'm' && b.value == 's' || a.value == 'l' && b.value == 'm') {
+    Logger.log('-1');
+    return 1;
+  }
+    Logger.log('0');
+  return 0;
+});
+  Logger.log(mapped1);
+
+// container for the resulting order
+var result = mapped1.map(function(el){
+  //Logger.log(el.index);
+  return list[el.index];
+});
+  
+  Logger.log(result);
+}
